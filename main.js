@@ -136,7 +136,14 @@ imagePlaceholder1.style.height = (BOXSIZE * NCOLUMNS + 0.45 ) + 'vh';
 
 
 for(var i = 0; i < NCOLUMNS * NROWS; i++){
-    mainImg1Box[i].style.width = BOXSIZE + 'vh';
-    mainImg1Box[i].style.height = BOXSIZE + 'vh';
+    var rowNo    = Math.floor( i / NCOLUMNS),
+        columnNo = i % NCOLUMNS;
+    var topBgMargin  = -rowNo    * BOXSIZE,
+        leftBgMargin = -columnNo * BOXSIZE;
+    mainImg1Box[i].style.width              = BOXSIZE + 'vh';
+    mainImg1Box[i].style.height             = BOXSIZE + 'vh';
+    mainImg1Box[i].style.backgroundImage    = "url('sample.jpg')";
+    mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
+    mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
 
 }
