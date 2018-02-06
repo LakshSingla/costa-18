@@ -3,8 +3,8 @@ console.log("This works");
 var imagePlaceholder1 = document.getElementById('main-img1');
 var mainImg1Box       = document.getElementsByClassName('main-img1-box');
 
-var NROWS = 10;
-var NCOLUMNS = 30;
+var NROWS = 30;
+var NCOLUMNS = 10;
 
 var generateRandomArray = function(size = NROWS * NCOLUMNS){
     var arr = [];
@@ -21,6 +21,16 @@ var generateRandomArray = function(size = NROWS * NCOLUMNS){
         arr.splice(y, 1);
     }
     return randarr;
+};
+
+var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLUMNS , rowThreshold = 2, ascending = true){
+    var sequentialArr = [];
+    for(i = 0; i <= Math.floor(rowSize / rowThreshold); i++){
+        sequentialArr = sequentialArr.concat(generateRandomArray(rowThreshold * columnSize ).map(function(elem){
+            return elem + (i*columnSize*rowThreshold);
+        }));
+    }
+    return sequentialArr;
 };
 
 
@@ -73,7 +83,7 @@ for(var y = 0; y < NROWS; y++){
 //     });
 // }
 var showAnim = function () {
-    let arr = generateRandomArray();
+    let arr = generateSequentialRandomArray();
     var tl = new TimelineMax();
     var overlappingFactor = 0.045;
     var absolutePosn = overlappingFactor;
@@ -89,6 +99,7 @@ var showAnim = function () {
         }, absolutePosn);
         absolutePosn += overlappingFactor;
     });
+    tl.duration(3).play();
     console.log(absolutePosn);
 
 }
