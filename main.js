@@ -27,7 +27,9 @@ var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLU
     var sequentialArr = [];
     for(i = 0; i <= Math.floor(rowSize / rowThreshold); i++){
         sequentialArr = sequentialArr.concat(generateRandomArray(rowThreshold * columnSize ).map(function(elem){
-            return elem + (i*columnSize*rowThreshold);
+            return elem + (i * columnSize * rowThreshold);
+        }).filter(function(elem){
+            return elem < rowSize * columnSize;
         }));
     }
     return sequentialArr;
@@ -82,6 +84,7 @@ for(var y = 0; y < NROWS; y++){
 //         backgroundColor: 'white'
 //     });
 // }
+
 var showAnim = function () {
     let arr = generateSequentialRandomArray();
     var tl = new TimelineMax();
@@ -102,4 +105,4 @@ var showAnim = function () {
     tl.duration(3).play();
     console.log(absolutePosn);
 
-}
+};
