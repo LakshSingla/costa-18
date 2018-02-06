@@ -3,8 +3,15 @@ console.log("This works");
 var imagePlaceholder1 = document.getElementById('main-img1');
 var mainImg1Box       = document.getElementsByClassName('main-img1-box');
 
-var NROWS = 30;
+var NROWS = 10  ;
 var NCOLUMNS = 10;
+
+var BOXSIZE = 5;
+
+// Array.from(mainImg1Box).forEach(function(elem){
+//     console.log(elem);
+//     elem.style.backgroundColor = "white";
+// });
 
 var generateRandomArray = function(size = NROWS * NCOLUMNS){
     var arr = [];
@@ -34,16 +41,17 @@ var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLU
     }
     return sequentialArr;
 };
+//
+// var swapArrayElements = function(arr , iterations = 30, threshold = 5, ){
+//     var swappedArr = [];
+//     while(iterations--){
+//         var index1 = Math.random() * thr;
+//     }
+//     return swappedArr;
+// }
 
 
-for(var y = 0; y < NROWS; y++){
-    for(var x = 0; x < NCOLUMNS; x++){
-        var div = document.createElement('div');
-        div.classList.add('main-img1-box');
-        div.classList.add('main-img-box');
-        imagePlaceholder1.append(div);
-    }
-}
+
 
 // window.onload = function(){
     // TweenLite.fromTo(mainImg1Box[0], 2, {
@@ -98,7 +106,8 @@ var showAnim = function () {
         }, {
             transform: 'translateY(0)',
             backgroundColor: 'pink',
-            opacity: '1'
+            opacity: '1',
+            ease: SlowMo.ease.config(0.7, 0.7, false)
         }, absolutePosn);
         absolutePosn += overlappingFactor;
     });
@@ -106,3 +115,28 @@ var showAnim = function () {
     console.log(absolutePosn);
 
 };
+
+//Main program
+
+// TweenMax.defaultEase = SlowMo.ease.config(0.7, 0.7, false);
+// TweenMax.defaultEase = SteppedEase.config(0.7, 0.7, false);
+
+
+for(var y = 0; y < NROWS; y++){
+    for(var x = 0; x < NCOLUMNS; x++){
+        var div = document.createElement('div');
+        div.classList.add('main-img1-box');
+        div.classList.add('main-img-box');
+        imagePlaceholder1.append(div);
+    }
+}
+
+imagePlaceholder1.style.width  = (BOXSIZE * NROWS    + 0.45 ) + 'vh';
+imagePlaceholder1.style.height = (BOXSIZE * NCOLUMNS + 0.45 ) + 'vh';
+
+
+for(var i = 0; i < NCOLUMNS * NROWS; i++){
+    mainImg1Box[i].style.width = BOXSIZE + 'vh';
+    mainImg1Box[i].style.height = BOXSIZE + 'vh';
+
+}
