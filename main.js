@@ -94,22 +94,26 @@ var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLU
 // }
 
 var showAnim = function () {
-    let arr = generateSequentialRandomArray();
+    var animProperties = {
+            overlappingFactor: 0.09,
+            duration         : 0.1
+    };
+    var arr = generateSequentialRandomArray();
     var tl = new TimelineMax();
     var overlappingFactor = 0.045;
     var absolutePosn = overlappingFactor;
     arr.forEach(function(elem){
-        tl.fromTo(mainImg1Box[elem], 0.05, {
-            transform: 'translateY(+50vh)',
+        tl.fromTo(mainImg1Box[elem], animProperties.duration , {
+            transform: 'translateY(+60vh)',
             backgroundColor: 'white',
-            opacity: '0'
+            // opacity: '0'
         }, {
             transform: 'translateY(0)',
             backgroundColor: 'pink',
-            opacity: '1',
+            // opacity: '1',
             ease: SlowMo.ease.config(0.7, 0.7, false)
         }, absolutePosn);
-        absolutePosn += overlappingFactor;
+        absolutePosn += animProperties.overlappingFactor;
     });
     tl.duration(3).play();
     console.log(absolutePosn);

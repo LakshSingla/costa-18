@@ -18,7 +18,7 @@ body{
 #main-img1{
     height: 80vh;
     width: 40vw;
-    border: 1px solid white;
+    border: 1px solid transparent;
     position: absolute;
     left: 20vw;
     bottom: 10vh;
