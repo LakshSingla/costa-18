@@ -95,13 +95,13 @@ var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLU
 
 var showAnim = function () {
     var animProperties = {
-            overlappingFactor: 0.09,
+            overlappingFactor: 0.098,
             duration         : 0.1
     };
     var arr = generateSequentialRandomArray();
     var tl = new TimelineMax();
     var overlappingFactor = 0.045;
-    var absolutePosn = overlappingFactor;
+    var absolutePosn = animProperties.overlappingFactor;
     arr.forEach(function(elem){
         tl.fromTo(mainImg1Box[elem], animProperties.duration , {
             transform: 'translateY(+60vh)',
@@ -111,11 +111,11 @@ var showAnim = function () {
             transform: 'translateY(0)',
             backgroundColor: 'pink',
             // opacity: '1',
-            ease: SlowMo.ease.config(0.7, 0.7, false)
+            ease:  Expo. easeOut
         }, absolutePosn);
         absolutePosn += animProperties.overlappingFactor;
     });
-    tl.duration(3).play();
+    tl.duration(10).play();
     console.log(absolutePosn);
 
 };
