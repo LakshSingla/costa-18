@@ -3,6 +3,8 @@ console.log("This works");
 var imagePlaceholder1 = document.getElementById('main-img1');
 var mainImg1Box       = document.getElementsByClassName('main-img1-box');
 
+
+//NOTE: MAKE SURE THAT NROWS * NCOLUMNS IS EVEN
 var NROWS = 10  ;
 var NCOLUMNS = 10;
 
@@ -30,7 +32,7 @@ var generateRandomArray = function(size = NROWS * NCOLUMNS){
     return randarr;
 };
 
-var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLUMNS , rowThreshold = 2, ascending = true){
+var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLUMNS , rowThreshold = 1, ascending = true){
     var sequentialArr = [];
     for(i = 0; i <= Math.floor(rowSize / rowThreshold); i++){
         sequentialArr = sequentialArr.concat(generateRandomArray(rowThreshold * columnSize ).map(function(elem){
@@ -40,6 +42,20 @@ var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLU
         }));
     }
     return sequentialArr;
+};
+
+
+//size parameter should be a multiple of 2
+var generateCheckeredArray = function(size = NROWS * NCOLUMNS){
+    var checkeredArr = [];
+    var randArr1 = generateRandomArray(size/2)
+    for(var i = 0; i < size/2; i++){
+        checkeredArr.push(2*randArr1[i]);
+    }
+    for(var i = 0; i < size/2; i++){
+        checkeredArr.push(2*randArr1[i] + 1);
+    }
+    return checkeredArr;
 };
 //
 // var swapArrayElements = function(arr , iterations = 30, threshold = 5, ){
@@ -95,13 +111,15 @@ var generateSequentialRandomArray = function(rowSize = NROWS, columnSize = NCOLU
 
 var showAnim = function () {
     var animProperties = {
-            overlappingFactor: 0.098,
+            overlappingFactor: 0.003,
             duration         : 0.1
     };
-    var arr = generateSequentialRandomArray();
+    // var arr = generateSequentialRandomArray();
+    // var arr = generateSequentialRandomArray();
+    var arr = generateCheckeredArray();
     var tl = new TimelineMax();
-    var overlappingFactor = 0.045;
-    var absolutePosn = animProperties.overlappingFactor;
+    // var overlappingFactor = 0.003;
+    var absolutePosn = 0;
     arr.forEach(function(elem){
         tl.fromTo(mainImg1Box[elem], animProperties.duration , {
             transform: 'translateY(+60vh)',
@@ -112,10 +130,11 @@ var showAnim = function () {
             backgroundColor: 'pink',
             // opacity: '1',
             ease:  Expo. easeOut
-        }, absolutePosn);
+        },absolutePosn );
+        //"-=0.097"
         absolutePosn += animProperties.overlappingFactor;
     });
-    tl.duration(10).play();
+    tl.duration(1.5).play();
     console.log(absolutePosn);
 
 };
