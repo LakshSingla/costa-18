@@ -11,7 +11,7 @@ var mainImg1Box       = document.getElementsByClassName('main-img1-box');
 var NROWS = 11;
 var NCOLUMNS = 14;
 
-var BOXSIZE = 6.5;
+var BOXSIZE = 7.25;
 
 // Array.from(mainImg1Box).forEach(function(elem){
 //     console.log(elem);
@@ -125,7 +125,7 @@ var showAnim = function () {
     var absolutePosn = 0;
     arr.forEach(function(elem){
         tl.fromTo(mainImg1Box[elem], animProperties.duration , {
-            transform: 'translateY(+60vh)',
+            transform: 'translateY(+100vh)',
             backgroundColor: 'white',
             // opacity: '0'
         }, {
@@ -137,7 +137,7 @@ var showAnim = function () {
         //"-=0.097"
         absolutePosn += animProperties.overlappingFactor;
     });
-    tl.duration(3).play();
+    tl.duration(2.5).play();
     console.log(absolutePosn);
 
 };
