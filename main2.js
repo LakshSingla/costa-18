@@ -5,13 +5,13 @@ var mainImg1Box       = document.getElementsByClassName('main-img1-box');
 
 
 //NOTE: MAKE SURE THAT NROWS * NCOLUMNS IS EVEN
-var NROWS = 10  ;
-var NCOLUMNS = 10;
+// var NROWS = 10  ;
+// var NCOLUMNS = 10;
 
-// var NROWS = 11;
-// var NCOLUMNS = 14;
+var NROWS = 11;
+var NCOLUMNS = 14;
 
-var BOXSIZE = 5;
+var BOXSIZE = 6.5;
 
 // Array.from(mainImg1Box).forEach(function(elem){
 //     console.log(elem);
@@ -76,7 +76,7 @@ var generateCheckeredArray = function(size = NROWS * NCOLUMNS){
     // TweenLite.fromTo(mainImg1Box[0], 2, {
     //     transform: "scaleX(0)",
     //     backgroundColor: '#ffffff'
-    // }, {
+    // }, {1.5
     //     transform: "scaleX(10)",
     //     backgroundColor: 'pink'
     // });
@@ -137,7 +137,7 @@ var showAnim = function () {
         //"-=0.097"
         absolutePosn += animProperties.overlappingFactor;
     });
-    tl.duration(1.5).play();
+    tl.duration(3).play();
     console.log(absolutePosn);
 
 };
@@ -162,14 +162,15 @@ imagePlaceholder1.style.height = (BOXSIZE * NCOLUMNS + 0.45 ) + 'vh';
 
 
 for(var i = 0; i < NCOLUMNS * NROWS; i++){
-    var rowNo    = Math.floor( i / NCOLUMNS),
-        columnNo = i % NCOLUMNS;
+    var rowNo    = Math.floor( i / NROWS),
+        columnNo = i % NROWS;
     var topBgMargin  = -rowNo    * BOXSIZE,
         leftBgMargin = -columnNo * BOXSIZE;
     mainImg1Box[i].style.width              = BOXSIZE + 'vh';
     mainImg1Box[i].style.height             = BOXSIZE + 'vh';
-    mainImg1Box[i].style.backgroundImage    = "url('sample.jpg')";
-    mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
+    mainImg1Box[i].style.backgroundImage    = "url('sample3.jpg')";
+    // mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
+    mainImg1Box[i].style.backgroundSize     = "825px 1050px";
     mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
 
 }
