@@ -18,7 +18,7 @@ body{
 #main-img1{
     height: 80vh;
     width: 40vw;
-    border: 2.5px solid transparent;
+    border: 2.3px solid transparent;
     position: absolute;
     left: 7.5vw;
     bottom: 0vh;
@@ -33,4 +33,5 @@ body{
 .img-wrapper{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
