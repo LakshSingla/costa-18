@@ -18,6 +18,33 @@ var BOXSIZE = 7.25;
 //     elem.style.backgroundColor = "white";
 // });
 
+var NO_OF_C = 8;
+var srcDir = 'costans-img/';
+var imgs = [
+    '',
+    'costan1.jpg', 
+    'costan2.jpg', 
+    'costan3.jpg', 
+    'costan4.jpg', 
+    'costan5.jpg', 
+    'costan6.jpg', 
+    'costan7.jpg', 
+    'costan8.jpg', 
+];
+var names = [
+    '',
+    'costan1', 
+    'costan2', 
+    'costan3', 
+    'costan4', 
+    'costan5', 
+    'costan6', 
+    'costan7', 
+    'costan8', 
+];
+
+var currentCostan = 0;
+
 var generateRandomArray = function(size = NROWS * NCOLUMNS){
     var arr = [];
     var randarr = [];
@@ -60,6 +87,8 @@ var generateCheckeredArray = function(size = NROWS * NCOLUMNS){
     }
     return checkeredArr;
 };
+
+var GLOBALARR = generateCheckeredArray();
 //
 // var swapArrayElements = function(arr , iterations = 30, threshold = 5, ){
 //     var swappedArr = [];
@@ -119,7 +148,7 @@ var showAnim = function () {
     };
     // var arr = generateSequentialRandomArray();
     // var arr = generateSequentialRandomArray();
-    var arr = generateCheckeredArray();
+    var arr = GLOBALARR;
     var tl = new TimelineMax();
     // var overlappingFactor = 0.003;
     var absolutePosn = 0;
@@ -132,7 +161,7 @@ var showAnim = function () {
             transform: 'translateY(0)',
             backgroundColor: 'pink',
             // opacity: '1',
-            ease:  Expo. easeOut
+            ease:  Expo.easeOut
         },absolutePosn );
         //"-=0.097"
         absolutePosn += animProperties.overlappingFactor;
@@ -162,7 +191,7 @@ arr.forEach(function(elem){
         transform: 'translateY(-100vh)',
         backgroundColor: 'pink',
         // opacity: '1',
-        ease:  Expo. easeOut
+        ease:  Expo.easeIn
     },absolutePosn );
     //"-=0.097"
     absolutePosn += animProperties.overlappingFactor;
@@ -172,21 +201,24 @@ console.log(absolutePosn);
 }
 
 var changeTo = function(state) {
-    setTimeout(showAnim, 2500);
-    currentCostan = state;
-    for(var i = 0; i < NCOLUMNS * NROWS; i++){
-        var rowNo    = Math.floor( i / NROWS),
-            columnNo = i % NROWS;
-        var topBgMargin  = -rowNo    * BOXSIZE,
-            leftBgMargin = -columnNo * BOXSIZE;
-        mainImg1Box[i].style.width              = BOXSIZE + 'vh';
-        mainImg1Box[i].style.height             = BOXSIZE + 'vh';
-        mainImg1Box[i].style.backgroundImage    = "url('"+srcDir+imgs[currentCostan]+"')";
-        // mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
-        mainImg1Box[i].style.backgroundSize     =  BOXSIZE * NROWS + "vh " + BOXSIZE * NCOLUMNS + "vh";
-        mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
-    }
     removeAnim();
+    setTimeout(function(){
+        for(var i = 0; i < NCOLUMNS * NROWS; i++){
+            var rowNo    = Math.floor( i / NROWS),
+                columnNo = i % NROWS;
+            var topBgMargin  = -rowNo    * BOXSIZE,
+                leftBgMargin = -columnNo * BOXSIZE;
+            mainImg1Box[i].style.width              = BOXSIZE + 'vh';
+            mainImg1Box[i].style.height             = BOXSIZE + 'vh';
+            mainImg1Box[i].style.backgroundImage    = "url('"+srcDir+imgs[currentCostan]+"')";
+            // mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
+            mainImg1Box[i].style.backgroundSize     =  BOXSIZE * NROWS + "vh " + BOXSIZE * NCOLUMNS + "vh";
+            mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
+        }
+        showAnim();
+    }, 2500);
+    currentCostan = state;
+    
 }
 
 //Main program
@@ -221,29 +253,3 @@ for(var i = 0; i < NCOLUMNS * NROWS; i++){
     mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
 }
 
-var NO_OF_C = 8;
-var srcDir = 'costans-img/';
-var imgs = [
-    '',
-    'costan1.jpg', 
-    'costan2.jpg', 
-    'costan3.jpg', 
-    'costan4.jpg', 
-    'costan5.jpg', 
-    'costan6.jpg', 
-    'costan7.jpg', 
-    'costan8.jpg', 
-];
-var names = [
-    '',
-    'costan1', 
-    'costan2', 
-    'costan3', 
-    'costan4', 
-    'costan5', 
-    'costan6', 
-    'costan7', 
-    'costan8', 
-];
-
-var currentCostan = 0;
