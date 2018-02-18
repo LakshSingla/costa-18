@@ -2,7 +2,7 @@ console.log("This works");
 
 var imagePlaceholder1 = document.getElementById('main-img1');
 var mainImg1Box       = document.getElementsByClassName('main-img1-box');
-
+var h1                = document.querySelector('h1');
 
 //NOTE: MAKE SURE THAT NROWS * NCOLUMNS IS EVEN
 // var NROWS = 10  ;
@@ -19,7 +19,7 @@ var BOXSIZE = 7.25;
 // });
 
 var NO_OF_C = 8;
-var srcDir = 'costans-img/';
+var srcDir = 'assets/';
 var imgs = [
     '',
     'costan1.jpg', 
@@ -33,14 +33,14 @@ var imgs = [
 ];
 var names = [
     '',
-    'costan1', 
-    'costan2', 
-    'costan3', 
-    'costan4', 
-    'costan5', 
-    'costan6', 
-    'costan7', 
-    'costan8', 
+    'costan1 + his surname', 
+    'costan2 + his surname', 
+    'costan3 + his surname', 
+    'costan4 + his surname', 
+    'costan5 + his surname', 
+    'costan6 + his surname', 
+    'costan7 + his surname', 
+    'costan8 + his surname', 
 ];
 
 var currentCostan = 0;
@@ -52,7 +52,7 @@ var generateRandomArray = function(size = NROWS * NCOLUMNS){
     for(var x = 0; x < size; x++){
         arr[x] = x;
     }
-    console.log(arr);
+    // console.log(arr);
     while(size--){
         var y = Math.floor(Math.random() * size);
         // console.log(size);
@@ -148,11 +148,11 @@ var showAnim = function () {
     };
     // var arr = generateSequentialRandomArray();
     // var arr = generateSequentialRandomArray();
-    var arr = GLOBALARR;
+    // var arr = GLOBALARR;
     var tl = new TimelineMax();
     // var overlappingFactor = 0.003;
     var absolutePosn = 0;
-    arr.forEach(function(elem){
+    GLOBALARR.forEach(function(elem){
         tl.fromTo(mainImg1Box[elem], animProperties.duration , {
             transform: 'translateY(+100vh)',
             backgroundColor: 'white',
@@ -167,7 +167,7 @@ var showAnim = function () {
         absolutePosn += animProperties.overlappingFactor;
     });
     tl.duration(2.5).play();
-    console.log(absolutePosn);
+    // console.log(absolutePosn);
 
 };
 
@@ -178,11 +178,13 @@ var removeAnim = function(){
 };
 // var arr = generateSequentialRandomArray();
 // var arr = generateSequentialRandomArray();
-var arr = generateCheckeredArray();
+// var arr = generateCheckeredArray();
+// arr = GLOBALARR;
 var tl = new TimelineMax();
 // var overlappingFactor = 0.003;
 var absolutePosn = 0;
-arr.forEach(function(elem){
+
+GLOBALARR.forEach(function(elem){
     tl.fromTo(mainImg1Box[elem], animProperties.duration , {
         transform: 'translateY(0vh)',
         backgroundColor: 'white',
@@ -191,17 +193,18 @@ arr.forEach(function(elem){
         transform: 'translateY(-100vh)',
         backgroundColor: 'pink',
         // opacity: '1',
-        ease:  Expo.easeIn
+        ease:  Expo.easeOut
     },absolutePosn );
     //"-=0.097"
     absolutePosn += animProperties.overlappingFactor;
 });
 tl.duration(2.5).play();
-console.log(absolutePosn);
+// console.log(absolutePosn);
 }
 
 var changeTo = function(state) {
     removeAnim();
+    currentCostan = state;
     setTimeout(function(){
         for(var i = 0; i < NCOLUMNS * NROWS; i++){
             var rowNo    = Math.floor( i / NROWS),
@@ -217,8 +220,15 @@ var changeTo = function(state) {
         }
         showAnim();
     }, 2500);
-    currentCostan = state;
-    
+    h1.textContent = names[currentCostan];
+    var scrambleText = new ScrambleText(
+        h1,
+        {
+            timeOffset : 200,
+            // callback: function () { console.log( 'ended' ); }
+        }
+    ).stop();
+    scrambleText.play().start();   
 }
 
 //Main program
@@ -253,3 +263,4 @@ for(var i = 0; i < NCOLUMNS * NROWS; i++){
     mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
 }
 
+window.onload = changeTo(4);
