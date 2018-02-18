@@ -193,12 +193,12 @@ GLOBALARR.forEach(function(elem){
         transform: 'translateY(-100vh)',
         backgroundColor: 'pink',
         // opacity: '1',
-        ease:  Expo.easeOut
+        ease:  Expo.easeIn
     },absolutePosn );
     //"-=0.097"
     absolutePosn += animProperties.overlappingFactor;
 });
-tl.duration(2.5).play();
+tl.duration(1.5).play();
 // console.log(absolutePosn);
 }
 
