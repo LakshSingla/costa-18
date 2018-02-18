@@ -142,6 +142,53 @@ var showAnim = function () {
 
 };
 
+var removeAnim = function(){
+    var animProperties = {
+        overlappingFactor: 0.003,
+        duration         : 0.1
+};
+// var arr = generateSequentialRandomArray();
+// var arr = generateSequentialRandomArray();
+var arr = generateCheckeredArray();
+var tl = new TimelineMax();
+// var overlappingFactor = 0.003;
+var absolutePosn = 0;
+arr.forEach(function(elem){
+    tl.fromTo(mainImg1Box[elem], animProperties.duration , {
+        transform: 'translateY(0vh)',
+        backgroundColor: 'white',
+        // opacity: '0'
+    }, {
+        transform: 'translateY(-100vh)',
+        backgroundColor: 'pink',
+        // opacity: '1',
+        ease:  Expo. easeOut
+    },absolutePosn );
+    //"-=0.097"
+    absolutePosn += animProperties.overlappingFactor;
+});
+tl.duration(2.5).play();
+console.log(absolutePosn);
+}
+
+var changeTo = function(state) {
+    setTimeout(showAnim, 2500);
+    currentCostan = state;
+    for(var i = 0; i < NCOLUMNS * NROWS; i++){
+        var rowNo    = Math.floor( i / NROWS),
+            columnNo = i % NROWS;
+        var topBgMargin  = -rowNo    * BOXSIZE,
+            leftBgMargin = -columnNo * BOXSIZE;
+        mainImg1Box[i].style.width              = BOXSIZE + 'vh';
+        mainImg1Box[i].style.height             = BOXSIZE + 'vh';
+        mainImg1Box[i].style.backgroundImage    = "url('"+srcDir+imgs[currentCostan]+"')";
+        // mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
+        mainImg1Box[i].style.backgroundSize     =  BOXSIZE * NROWS + "vh " + BOXSIZE * NCOLUMNS + "vh";
+        mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
+    }
+    removeAnim();
+}
+
 //Main program
 
 // TweenMax.defaultEase = SlowMo.ease.config(0.7, 0.7, false);
@@ -157,8 +204,8 @@ for(var y = 0; y < NROWS; y++){
     }
 }
 
-imagePlaceholder1.style.width  = (BOXSIZE * NROWS    + 0.45 ) + 'vh';
-imagePlaceholder1.style.height = (BOXSIZE * NCOLUMNS + 0.45 ) + 'vh';
+imagePlaceholder1.style.width  = (BOXSIZE * NROWS    + 1 ) + 'vh';
+imagePlaceholder1.style.height = (BOXSIZE * NCOLUMNS + 1 ) + 'vh';
 
 
 for(var i = 0; i < NCOLUMNS * NROWS; i++){
@@ -170,7 +217,33 @@ for(var i = 0; i < NCOLUMNS * NROWS; i++){
     mainImg1Box[i].style.height             = BOXSIZE + 'vh';
     mainImg1Box[i].style.backgroundImage    = "url('sample3.jpg')";
     // mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
-    mainImg1Box[i].style.backgroundSize     = "825px 1050px";
+    mainImg1Box[i].style.backgroundSize     =  BOXSIZE * NROWS + "vh " + BOXSIZE * NCOLUMNS + "vh";
     mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
-
 }
+
+var NO_OF_C = 8;
+var srcDir = 'costans-img/';
+var imgs = [
+    '',
+    'costan1.jpg', 
+    'costan2.jpg', 
+    'costan3.jpg', 
+    'costan4.jpg', 
+    'costan5.jpg', 
+    'costan6.jpg', 
+    'costan7.jpg', 
+    'costan8.jpg', 
+];
+var names = [
+    '',
+    'costan1', 
+    'costan2', 
+    'costan3', 
+    'costan4', 
+    'costan5', 
+    'costan6', 
+    'costan7', 
+    'costan8', 
+];
+
+var currentCostan = 0;
