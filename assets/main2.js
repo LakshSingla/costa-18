@@ -3,7 +3,7 @@ console.log("This works");
 var imagePlaceholder1 = document.getElementById('main-img1');
 var mainImg1Box       = document.getElementsByClassName('main-img1-box');
 var h1                = document.querySelector('h1');
-
+var h2                = document.querySelector('h2');
 //NOTE: MAKE SURE THAT NROWS * NCOLUMNS IS EVEN
 // var NROWS = 10  ;
 // var NCOLUMNS = 10;
@@ -47,7 +47,16 @@ var names = [
 
 var depNames = [
     '',
-    'DEPARTMENT OF ',
+    'DEPARTMENT OF abcd',
+    'DEPARTMENT OF abcd',
+    'DEPARTMENT OF abcd',
+    'DEPARTMENT OF abcd',
+    'DEPARTMENT OF abcd',
+    'DEPARTMENT OF abcd',
+    'DEPARTMENT OF abcd',
+    'DEPARTMENT OF abcd',
+    'DEPARTMENT OF abcd',
+    
 ];
 
 var currentCostan = 1;
@@ -134,7 +143,7 @@ var GLOBALARR = generateCheckeredArray();
     // tl.staggerFromTo(mainImg1Box, 5,  {
     //     transform: 'scaleX(0)',
     //     backgroundColor: 'white'
-    // }, {
+    // }, {w
     //     transform: 'scaleX(10)',
     //     backgroundColor: 'pink'
     // }, 0.1);
@@ -230,6 +239,15 @@ var changeTo = function(state) {
     h1.textContent = names[currentCostan];
     var scrambleText = new ScrambleText(
         h1,
+        {
+            timeOffset : 200,
+            // callback: function () { console.log( 'ended' ); }
+        }
+    ).stop();
+    scrambleText.play().start();
+    h2.textContent = depNames[currentCostan];
+    var scrambleText = new ScrambleText(
+        h2,
         {
             timeOffset : 200,
             // callback: function () { console.log( 'ended' ); }

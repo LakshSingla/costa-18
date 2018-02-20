@@ -38,9 +38,33 @@ body{
     align-items: center;
     align-content: center;
 }
+@font-face
+{
+    font-family: Robot Crushimport;
+    src:url("robot_crush/Robot Crush.ttf");
+}
 
-h1{
+.name_style{
     position: absolute;
     right: 5vw;
     color: white;   
+    font-family: Robot Crushimport;
+    letter-spacing: 2px;
+    font-size: 25px; 
+    left: 50vw;
+    top:22vw;
+ 
+
 }
+
+.dept_names{
+    /* position: absolute; */
+    
+    color: white; 
+    /* left: 51vw; */
+    /* top: 29vw; */
+    font-size: 25px; 
+    font-family: Robot Crushimport;
+  
+}
+
