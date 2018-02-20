@@ -155,11 +155,11 @@ var showAnim = function () {
     GLOBALARR.forEach(function(elem){
         tl.fromTo(mainImg1Box[elem], animProperties.duration , {
             transform: 'translateY(+100vh)',
-            backgroundColor: 'white',
+            // backgroundColor: 'white',
             // opacity: '0'
         }, {
             transform: 'translateY(0)',
-            backgroundColor: 'pink',
+            // backgroundColor: 'pink',
             // opacity: '1',
             ease:  Expo.easeOut
         },absolutePosn );
@@ -187,11 +187,11 @@ var absolutePosn = 0;
 GLOBALARR.forEach(function(elem){
     tl.fromTo(mainImg1Box[elem], animProperties.duration , {
         transform: 'translateY(0vh)',
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         // opacity: '0'
     }, {
         transform: 'translateY(-100vh)',
-        backgroundColor: 'pink',
+        // backgroundColor: 'pink',
         // opacity: '1',
         ease:  Expo.easeIn
     },absolutePosn );
@@ -219,7 +219,7 @@ var changeTo = function(state) {
             mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
         }
         showAnim();
-    }, 2500);
+    }, 1500);
     h1.textContent = names[currentCostan];
     var scrambleText = new ScrambleText(
         h1,
