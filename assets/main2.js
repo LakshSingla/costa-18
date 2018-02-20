@@ -18,7 +18,7 @@ var BOXSIZE = 7.25;
 //     elem.style.backgroundColor = "white";
 // });
 
-var NO_OF_C = 8;
+var NO_OF_C = 9;
 var srcDir = 'assets/';
 var imgs = [
     '',
@@ -29,21 +29,28 @@ var imgs = [
     'costan5.jpg', 
     'costan6.jpg', 
     'costan7.jpg', 
-    'costan8.jpg', 
+    'costan8.jpg',
+    'costan9.jpg', 
 ];
 var names = [
     '',
-    'costan1 + his surname', 
-    'costan2 + his surname', 
-    'costan3 + his surname', 
+    'Bharatha Ratna Puli', 
+    'Shivam Jindal', 
+    'Alanckrit Jain', 
+    'Keshav Jain', 
+    'Himangshu Baid', 
     'Hitesh Raghuvanshi', 
-    'costan5 + his surname', 
-    'costan6 + his surname', 
-    'Hitesh', 
-    'costan8 + his surname', 
+    'Anshuman Sharma', 
+    'Vaibhav Jain',
+    'Abhishek Gupta',    
 ];
 
-var currentCostan = 0;
+var depNames = [
+    '',
+    'DEPARTMENT OF ',
+];
+
+var currentCostan = 1;
 
 var generateRandomArray = function(size = NROWS * NCOLUMNS){
     var arr = [];
@@ -228,7 +235,8 @@ var changeTo = function(state) {
             // callback: function () { console.log( 'ended' ); }
         }
     ).stop();
-    scrambleText.play().start();   
+    scrambleText.play().start();
+
 }
 
 //Main program
@@ -263,8 +271,44 @@ for(var i = 0; i < NCOLUMNS * NROWS; i++){
     mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
 }
 
-window.addEventListener('keydown', function(){
-
-});
+window.addEventListener('keydown', function(e){
+    console.log(e.keyCode);
+    switch(e.keyCode){
+        case 37:
+        (currentCostan == 1) ? changeTo(9) : changeTo(currentCostan - 1);
+        break;
+        case 39:
+        (currentCostan == 9) ? changeTo(1) : changeTo(currentCostan + 1);
+        break;
+        case 49:
+        changeTo(1);
+        break;
+        case 50:
+        changeTo(2);
+        break;
+        case 51:
+        changeTo(3);
+        break;
+        case 52:
+        changeTo(4);
+        break;
+        case 53:
+        changeTo(5);
+        break;
+        case 54:
+        changeTo(6);
+        break;
+        case 55:
+        changeTo(7);
+        break;
+        case 56:
+        changeTo(8);
+        break;
+        case 56:
+        changeTo(9);
+        break;
+    }
+    console.log(currentCostan);
+}); 
 
 // window.onload = changeTo(4);
