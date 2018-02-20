@@ -263,4 +263,8 @@ for(var i = 0; i < NCOLUMNS * NROWS; i++){
     mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
 }
 
-window.onload = changeTo(4);
+window.addEventListener('keydown', function(){
+
+});
+
+// window.onload = changeTo(4);
