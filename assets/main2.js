@@ -86,7 +86,7 @@ var depNameOffset = [
 
 var depNames = [
     '',
-    "PRESIDENT, SUTDENTS' UNION",
+    "PRESIDENT, STUDENTS' UNION",
     "GENERAL SECRETARY, STUDENTS' UNION",
     'DEPARTMENT PUBLICATION AND CORRESPONDENCE',
     'DEPARTMENT OF SPONSORSHIP AND MARKETING',
@@ -314,18 +314,18 @@ imagePlaceholder1.style.width  = (BOXSIZE * NROWS    + 1 ) + 'vh';
 imagePlaceholder1.style.height = (BOXSIZE * NCOLUMNS + 1 ) + 'vh';
 
 
-for(var i = 0; i < NCOLUMNS * NROWS; i++){
-    var rowNo    = Math.floor( i / NROWS),
-        columnNo = i % NROWS;
-    var topBgMargin  = -rowNo    * BOXSIZE,
-        leftBgMargin = -columnNo * BOXSIZE;
-    mainImg1Box[i].style.width              = BOXSIZE + 'vh';
-    mainImg1Box[i].style.height             = BOXSIZE + 'vh';
-    mainImg1Box[i].style.backgroundImage    = "url('sample3.jpg')";
-    // mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
-    mainImg1Box[i].style.backgroundSize     =  BOXSIZE * NROWS + "vh " + BOXSIZE * NCOLUMNS + "vh";
-    mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
-}
+// for(var i = 0; i < NCOLUMNS * NROWS; i++){
+//     var rowNo    = Math.floor( i / NROWS),
+//         columnNo = i % NROWS;
+//     var topBgMargin  = -rowNo    * BOXSIZE,
+//         leftBgMargin = -columnNo * BOXSIZE;
+//     mainImg1Box[i].style.width              = BOXSIZE + 'vh';
+//     mainImg1Box[i].style.height             = BOXSIZE + 'vh';
+//     mainImg1Box[i].style.backgroundImage    = "url('sample3.jpg')";
+//     // mainImg1Box[i].style.backgroundSize     = (NCOLUMNS * BOXSIZE )+ "vh " + (NROWS * BOXSIZE) + "vh";
+//     mainImg1Box[i].style.backgroundSize     =  BOXSIZE * NROWS + "vh " + BOXSIZE * NCOLUMNS + "vh";
+//     mainImg1Box[i].style.backgroundPosition = leftBgMargin + "vh " + topBgMargin + "vh";
+// }
 
 window.addEventListener('keydown', function(e){
     console.log(e.keyCode);

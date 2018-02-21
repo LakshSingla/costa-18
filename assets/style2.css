@@ -41,7 +41,7 @@ body{
 @font-face
 {
     font-family: Robot Crushimport;
-    src:url("complexpromo.ttf");
+    src:url("robot_crush222/Robot Crush.ttf");
 }
 
 .name_style{
@@ -65,6 +65,7 @@ body{
     /* top: 29vw; */
     font-size: 25px; 
     font-family: Robot Crushimport;
+    /* font-family: 'Courier New', Courier, monospace; */
   
 }
 
