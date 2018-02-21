@@ -27,36 +27,48 @@ var imgs = [
     'costan3.jpg', 
     'costan4.jpg', 
     'costan5.jpg', 
-    'costan6.jpg', 
+    'hitesh.jpg', 
     'costan7.jpg', 
     'costan8.jpg',
     'costan9.jpg', 
 ];
+// var names = [
+//     '',
+//     'Bharatha Ratna Puli', 
+//     'Shivam Jindal', 
+//     'Alanckrit Jain', 
+//     'Keshav Jain', 
+//     'Himangshu Baid', 
+//     'Hitesh Raghuvanshi', 
+//     'Anshuman Sharma', 
+//     'Vaibhav Jain',
+//     'Abhishek Gupta',    
+// ];
+
 var names = [
     '',
-    'Bharatha Ratna Puli', 
-    'Shivam Jindal', 
-    'Alanckrit Jain', 
-    'Keshav Jain', 
-    'Himangshu Baid', 
-    'Hitesh Raghuvanshi', 
-    'Anshuman Sharma', 
-    'Vaibhav Jain',
-    'Abhishek Gupta',    
+    'BHARATHA RATNA PULI',
+    'SHIVAM JINDAL',
+    'ALANCKRIT JAIN',
+    'KESHAV JAIN',
+    'HIMANGSHU BAID',
+    'HITESH RAGHUVANSHI',
+    'ANSHUMAN SHARMA',
+    'VAIBHAV JAIN',
+    'ABHISHEK GUPTA'
 ];
 
 var depNames = [
     '',
-    'DEPARTMENT OF abcd',
-    'DEPARTMENT OF abcd',
-    'DEPARTMENT OF abcd',
-    'DEPARTMENT OF abcd',
-    'DEPARTMENT OF abcd',
-    'DEPARTMENT OF abcd',
-    'DEPARTMENT OF abcd',
-    'DEPARTMENT OF abcd',
-    'DEPARTMENT OF abcd',
-    
+    "PRESIDENT, SUTDENTS' UNION",
+    "GENERAL SECRETARY, STUDENTS' UNION",
+    'DEPARTMENT PUBLICATION AND CORRESPONDENCE',
+    'DEPARTMENT OF SPONSORSHIP AND MARKETING',
+    'DEPARTMENT OF CONTROLS',
+    'DEPARTMENT OF VISUAL MEDIA',
+    'DEPARTMENT OF RECEPTION AND ACCOMODATION',
+    'DEPARTMENT OF ART, DESIGN AND PUBLICITY',
+    'DEPARTMENT OF PAPER EVALUATION AND PRESENTATION',
 ];
 
 var currentCostan = 1;
@@ -104,7 +116,7 @@ var generateCheckeredArray = function(size = NROWS * NCOLUMNS){
     return checkeredArr;
 };
 
-var GLOBALARR = generateCheckeredArray();
+var GLOBALARR = generateSequentialRandomArray();
 //
 // var swapArrayElements = function(arr , iterations = 30, threshold = 5, ){
 //     var swappedArr = [];
