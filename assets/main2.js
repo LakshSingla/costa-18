@@ -30,7 +30,7 @@ var imgs = [
     'hitesh.jpg', 
     'costan7.jpg', 
     'costan8.jpg',
-    'costan9.jpg', 
+    'costan8.jpg', 
 ];
 // var names = [
 //     '',
@@ -56,6 +56,32 @@ var names = [
     'ANSHUMAN SHARMA',
     'VAIBHAV JAIN',
     'ABHISHEK GUPTA'
+];
+
+var nameOffset = [
+    '', 
+    200,
+    275,
+    275,
+    335,
+    270,
+    185,
+    230,
+    285,
+    275
+]
+
+var depNameOffset = [
+    '',
+    150,
+    110,
+    95,
+    95,
+    165,
+    135,
+    90,
+    95,
+    80
 ];
 
 var depNames = [
@@ -252,7 +278,7 @@ var changeTo = function(state) {
     var scrambleText = new ScrambleText(
         h1,
         {
-            timeOffset : 200,
+            timeOffset : nameOffset[currentCostan],
             // callback: function () { console.log( 'ended' ); }
         }
     ).stop();
@@ -261,7 +287,7 @@ var changeTo = function(state) {
     var scrambleText = new ScrambleText(
         h2,
         {
-            timeOffset : 200,
+            timeOffset : depNameOffset[currentCostan],
             // callback: function () { console.log( 'ended' ); }
         }
     ).stop();
@@ -334,7 +360,7 @@ window.addEventListener('keydown', function(e){
         case 56:
         changeTo(8);
         break;
-        case 56:
+        case 57:
         changeTo(9);
         break;
     }
