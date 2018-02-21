@@ -22,15 +22,15 @@ var NO_OF_C = 9;
 var srcDir = 'assets/';
 var imgs = [
     '',
-    'costan1.jpg', 
-    'costan2.jpg', 
-    'costan3.jpg', 
-    'costan4.jpg', 
-    'costan5.jpg', 
+    'puli.jpg', 
+    'jindal.jpg', 
+    'alanckrit.jpg', 
+    'keshav.jpg', 
+    'baid.jpg', 
     'hitesh.jpg', 
-    'costan7.jpg', 
-    'costan8.jpg',
-    'costan8.jpg', 
+    'anshu.jpg', 
+    'vaibhav.jpg',
+    'abhishek.jpg', 
 ];
 // var names = [
 //     '',
